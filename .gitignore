@@ -1,0 +1,17 @@
+*.html
+*.o
+*.so
+*.c
+*.pyc
+build/
+scripts/
+*~
+.#*
+#*
+.project
+.pydevproject
+*.h5
+*.h5part
+.ipynb_checkpoints
+.DS_Store
+*.__afs*
