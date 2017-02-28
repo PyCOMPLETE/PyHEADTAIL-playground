@@ -4,3 +4,5 @@ import sys, os
 sys.path.append(os.path.expanduser('~/cern/git/PyHEADTAIL/PyHEADTAIL'))
 ## PySussix:
 sys.path.append(os.path.expanduser('~/cern/codes/PySussix'))
+## PyCERNmachines:
+sys.path.append(os.path.expanduser('~/cern/git/'))
