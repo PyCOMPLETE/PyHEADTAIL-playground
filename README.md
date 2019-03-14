@@ -29,6 +29,7 @@ With a bit more detail and focus, modules and concepts of `PyHEADTAIL` are expla
 * [monitoring of beam distribution during simulation](https://nbviewer.jupyter.org/github/PyCOMPLETE/PyHEADTAIL-playground/blob/master/howto_notebooks/MonitorTest.ipynb)
 * [thin multipole kicks](https://nbviewer.jupyter.org/github/PyCOMPLETE/PyHEADTAIL-playground/blob/master/howto_notebooks/MultipolesTest.ipynb)
 * [PyHEADTAIL on the GPU tutorial](https://nbviewer.jupyter.org/github/PyCOMPLETE/PyHEADTAIL-playground/blob/master/howto_notebooks/PyHEADTAIL_on_GPU_Tutorial.ipynb)
+* [matching of arbitrary stationary distributions into arbitrary RF buckets](https://nbviewer.jupyter.org/github/PyCOMPLETE/PyHEADTAIL-playground/blob/master/howto_notebooks/RFBucket_Matching.ipynb)
 * [deformation of RF bucket potential by longitudinal space charge](https://nbviewer.jupyter.org/github/PyCOMPLETE/PyHEADTAIL-playground/blob/master/howto_notebooks/RFBucket_Potential_Deformation.ipynb)
 * [radio frequency quadrupoles for Landau damping](https://nbviewer.jupyter.org/github/PyCOMPLETE/PyHEADTAIL-playground/blob/master/howto_notebooks/RFQTest.ipynb)
 * [slicing in the longitudinal plane](https://nbviewer.jupyter.org/github/PyCOMPLETE/PyHEADTAIL-playground/blob/master/howto_notebooks/SlicingTest.ipynb)
