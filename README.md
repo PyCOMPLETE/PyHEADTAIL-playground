@@ -37,3 +37,11 @@ With a bit more detail and focus, modules and concepts of `PyHEADTAIL` are expla
 * [Bassetti-Erskine / Gaussian space charge model](https://nbviewer.jupyter.org/github/PyCOMPLETE/PyHEADTAIL-playground/blob/master/howto_notebooks/TransverseGaussianSpaceCharge.ipynb)
 * [transverse tracking](https://nbviewer.jupyter.org/github/PyCOMPLETE/PyHEADTAIL-playground/blob/master/howto_notebooks/TransverseTrackingTest.ipynb)
 * [wakefield models with dipolar and quadrupolar terms](https://nbviewer.jupyter.org/github/PyCOMPLETE/PyHEADTAIL-playground/blob/master/howto_notebooks/WakeTest.ipynb)
+
+# Further Resources:
+The [PyHEADTAIL wiki](https://github.com/PyCOMPLETE/PyHEADTAIL/wiki) is the entry level for documentation on PyHEADTAIL.
+
+These are some potentially useful and concise slides as an overview on PyHEADTAIL, some from the [PyHEADTAIL developer meetings](https://indico.cern.ch/category/6360/):
+* [PyHEADTAIL Playground, testing and release process](https://indico.cern.ch/event/799991/)
+* [GPU integration in PyHEADTAIL](https://indico.cern.ch/event/807697/)
+* [Space Charge integration in PyHEADTAIL](https://indico.cern.ch/event/828068/)
