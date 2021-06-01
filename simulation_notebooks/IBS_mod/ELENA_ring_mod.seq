@@ -1,0 +1,197 @@
+!
+! ELENA ring sequence
+!
+!
+! Changelog:
+! 5/06/2018:
+!   - started with Pavel''s optics.
+!   - cleaned up some commented lines and added some markers
+!   - redefined randomly some names of the e-cool solenoids
+!   - TODO: cleanup useless lines. re-arrange markers "badly" used here and there.
+
+
+
+TITLE, "ELENA ring";  
+
+! it seems well compatible with https://edms.cern.ch/ui/file/1252808/AJ/ad_lm___0071-vAJ.pdf! 
+! note, LBM = 0.927*pi/3 = 0.9708. This 0.97 here and there is an approximation, I guess...
+SECTION1: SEQUENCE, REFER=CENTRE, L=4.50 + 0.97;
+   LNR.MCCAY.0105:   DHV,      at = 0.3206;
+   LNR.BPMEB.0110:   BPM,      at = 0.3206;
+   LNR.MMIDINJ:      MARKER,   at = 2.25;  ! basically the middle of injection section
+   LNR.MBMIE.0115:   MARKER,   at = 0.15035 + 2.27925;   ! placed inside of injection septum
+   LNR.BTVPA.0117:   BTV,      at = 2.9984  - 0.392/4;
+   LNR.BTVPA.0118:   BTV,      at = 2.9984  + 0.392/4;
+   LNR.MKKFH.0120:   KFI,      at = 3.5906;
+   LNR.BPMEB.0125:   BPM,      at = (0.97-LBM)/2 + 4.179 ;
+   LNR.MCCAY.0130:   DHV,      at = (0.97-LBM)/2 + 4.179;
+   LNR.MBHEK.0135a:  BMH1,     at = 4.5 - (LBM - 0.97) + LBM/2 - LBM/4;
+   LNR.MBHEK.0135:   MARKER,   at = 4.5 - (LBM - 0.97) + LBM/2;
+!   LNR.MBHEK.0135:   BMH,      at = 4.5 - (LBM - 0.97) + LBM/2;
+   LNR.MBHEK.0135b:  BMH2,     at = 4.5 - (LBM - 0.97) + LBM/2 + LBM/4;
+ENDSEQUENCE; 
+
+SECTION2: SEQUENCE, REFER=CENTRE, L=3.8964-(LBM-0.97) + LBM;
+   LNR.MXNAD.0201:   SF,       at = (0.97 - LBM)/2 + 0.275;
+   LNR.MQNLG.0205:  Q1H,      at = (0.97 - LBM)/2 + 0.625  - 0.125/2;
+   LNR.MQNLGm.0205:   MARKER,   at = (0.97 - LBM)/2 + 0.625;
+   LNR.MQNLG.0206:  Q1H,      at = (0.97 - LBM)/2 + 0.625  + 0.125/2;
+   LNR.MQNLG.0210:   Q2H,      at = (0.97 - LBM)/2 + 1.0982 - 0.125/2; 
+   LNR.BPMEA.0215:   BPM,      at = (0.97 - LBM)/2 + 1.0982;
+   LNR.MQNLG.0211:  Q2H,      at = (0.97 - LBM)/2 + 1.0982 + 0.125/2; 
+   LNR.MXNAD.0220:   SD,       at = (0.97 - LBM)/2 + 1.4132 + 0.150/2;
+   LNR.APULA.0225:   USL,      at = (0.97 - LBM)/2 + 1.88195;
+   LNR.APULA.0227:   USL,      at = (0.97 - LBM)/2 + 2.39945;
+   LNR.MCCAY.0230:   DHV,      at = (0.97 - LBM)/2 + 3.1884 - 0.209/2; 
+   LNR.MQNLG.0235:  Q3H,      at = (0.97 - LBM)/2 + 3.4714 - 0.125/2; 
+   LNR.MQNLG.0235m:   MARKER,   at = (0.97 - LBM)/2 + 3.4714; 
+   LNR.BPMEA.0240:   BPM,      at = (0.97 - LBM)/2 + 3.4714;
+   LNR.MQNLG.0236:  Q3H,      at = (0.97 - LBM)/2 + 3.4714 + 0.125/2; 
+   LNR.MBHEK.0245a:  BMH1,     at = 3.8964 - (LBM - 0.97) + LBM/2 - LBM/4;
+   LNR.MBHEK.0245:   MARKER,   at = 3.8964 - (LBM - 0.97) + LBM/2;
+!   LNR.MBHEK.0245:   BMH,      at = 3.8964 - (LBM - 0.97) + LBM/2;
+   LNR.MBHEK.0245b:  BMH2,     at = 3.8964 - (LBM - 0.97) + LBM/2 + LBM/4;
+ENDSEQUENCE; 
+
+SECTION3: SEQUENCE, REFER=CENTRE, L=3.8964-(LBM-0.97) + LBM;
+   LNR.MQNLG.0305:  Q3H,      at = (0.97 - LBM)/2 + 0.425 - 0.125/2; 
+   LNR.MQNLG.0305m:   MARKER,   at = (0.97 - LBM)/2 + 0.425; 
+   LNR.MQNLG.0306:  Q3H,      at = (0.97 - LBM)/2 + 0.425 + 0.125/2; 
+/***  Trim quads for adjustment of beta functions around cooler, not implemented ***/
+!  LNR.MQNLG.0305a:   Q3T,      at = (0.97 - LBM)/2 + 0.425 - 0.125/2; 
+!  LNR.MQNLG.0305b:   Q3T,      at = (0.97 - LBM)/2 + 0.425 + 0.125/2; 
+   LNE.MAR.5000:     MARKER,   at = (0.97 - LBM)/2 + 1.115 - 0.3; ! marker where LNE50 optics starts
+   LNR.ZDFA.0310:    DFH2,     at = (0.97 - LBM)/2 + 1.115;
+!                     M20,      at = (0.97 - LBM)/2 + 2.0086 - 0.375;
+   LNR.BQKMA.0312:   Qmeter,   at = (0.97 - LBM)/2 + 2.0086;
+   LNR.MQNLG.0315:  Q2H,      at = (0.97 - LBM)/2 + 2.7982 - 0.125/2; 
+   LNR.MQNLG.0315m:   MARKER,   at = (0.97 - LBM)/2 + 2.7982; 
+   LNR.BPMEA.0320:   BPM,      at = (0.97 - LBM)/2 + 2.7982;
+   LNR.MQNLG.0316:  Q2H,      at = (0.97 - LBM)/2 + 2.7982 + 0.125/2; 
+/***  Trim quads for adjustment of beta functions around cooler, not implemented ***/
+!  LNR.MQNLG.0315a:   Q2T,      at = (0.97 - LBM)/2 + 2.7982 - 0.125/2; 
+!  LNR.MQNLG.0315b:   Q2T,      at = (0.97 - LBM)/2 + 2.7982 + 0.125/2; 
+   LNR.MQNLG.0325:  Q1H,      at = (0.97 - LBM)/2 + 3.2714 - 0.125/2; 
+   LNR.MQNLG.0326:  Q1H,      at = (0.97 - LBM)/2 + 3.2714 + 0.125/2; 
+/***  Trim quads for adjustment of beta functions around cooler, not implemented ***/
+!   LNR.MQNLG.0325a:  Q1T,     at = (0.97 - LBM)/2 + 3.2714 - 0.125/2; 
+!   LNR.MQNLG.0325b:  Q1T,     at = (0.97 - LBM)/2 + 3.2714 + 0.125/2; 
+   LNR.MCCAY.0330:   DHV,      at = (0.97 - LBM)/2 + 3.6059; 
+   LNR.MBHEK.0335a:  BMH1,     at = 3.8964 - (LBM - 0.97) + LBM/2 - LBM/4;
+   LNR.MBHEK.0335:   MARKER,   at = 3.8964 - (LBM - 0.97) + LBM/2;
+!   LNR.MBHEK.0335:   BMH,     at = 3.8964 - (LBM - 0.97) + LBM/2;
+   LNR.MBHEK.0335b:  BMH2,     at = 3.8964 - (LBM - 0.97) + LBM/2 + LBM/4;
+ENDSEQUENCE; 
+
+SECTION4: SEQUENCE, REFER=CENTRE, L=4.5-(LBM-0.97) + LBM;
+!   LNR.MCCAY.0405:   DHV41,    at = (0.97 - LBM)/2 + 0.321;
+!   LNR.MCCAY.0405:   DHV,      at = (0.97 - LBM)/2 + 0.321 - 0.209/4;
+   LNR.MCCAY.0405:   DHV,      at = (0.97 - LBM)/2 + 2.25 - 1.92125;
+!   LNR.BPMEB.0407:   BPM,      at = (0.97 - LBM)/2 + 0.321;
+   LNR.BPMEB.0407:   BPM,      at = (0.97 - LBM)/2 + 2.25 - 1.92125;
+   LNR.MLNAF.0410:   SCOMP,    at = (0.97-LBM)/2 + 0.725;
+!   LNR.MCCAY.0420:   DHVEC1,   at = (0.97 - LBM)/2 + 2.25 - 1.01382;  
+   LNR.MCCAY.0420:   DHV,      at = (0.97 - LBM)/2 + 2.25 - 1.01382;  
+!!!!! start E-COOLER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+/***********     Kyoto-style correctors integrated into electron cooler     ***********/
+   LNR.MCVEA.0425:   DHVEC2,   at = (0.97 - LBM)/2 + 2.25 - 0.8698 ;
+   LNR.ECTOR.0427xx: TOR1,     at = (0.97 - LBM)/2 + 2.25 - 0.66;
+   LNR.ECSOL.0427xx: MSOL1,    at = (0.97 - LBM)/2 + 2.25  - (0.65/2+(0.763 + 0.1016)/4);
+   LNR.BPMEC.0428:   BPM,      at = (0.97 - LBM)/2 + 2.25 - (0.763 + 0.1016)/2; 
+!!   MSOL,   at = (0.97 - LBM)/2 + 2.25  - 0.65/2; 
+!!   EBEAM,  at = (0.97 - LBM)/2 + 2.25 - 0.65;
+!!   MSOL2,   at = (0.97 - LBM)/2 + 2.25 - (0.753 + 0.1016)/4;
+   LNR.ECSOL.0427yy: MSOL2,    at = (0.97 - LBM)/2 + 2.25 - (0.763 + 0.1016)/4;
+   EBEAM,                      at = (0.97 - LBM)/2 + 2.25;
+   MECOOL,                     at = (0.97 - LBM)/2 + 2.25;
+   EBEAM,                      at = (0.97 - LBM)/2 + 2.25;
+!!   MSOL,   at =(0.97 - LBM)/2 + 2.25 + 0.325;    
+   LNR.ECSOL.0433yy: MSOL2,    at = (0.97 - LBM)/2 + 2.25 + (0.763 + 0.1016)/4;
+!!   EBEAM,  at = (0.97 - LBM)/2 + 2.25 + 0.65;
+   LNR.BPMEC.0432:   BPM,      at = (0.97 - LBM)/2 + 2.25 + (0.763 + 0.1016)/2; 
+   LNR.ECSOL.0433xx: MSOL1,    at = (0.97 - LBM)/2 + 2.25  + (0.65/2+(0.763 + 0.1016)/4);
+   LNR.ECTOR.0433xx: TOR2,     at = (0.97 - LBM)/2 + 2.25 + 0.66;
+/***********     Kyoto-style correctors integrated into electron cooler     ***********/
+   LNR.MCVEA.0435:   DHVEC2,   at = (0.97 - LBM)/2 + 2.25 + 0.8698;
+!!!!! end E-COOLER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   LNR.MCCAY.0440:   DHVEC1,   at = (0.97 - LBM)/2 + 2.25 + 1.01382;  
+   LNR.MLNAF.0450:   SCOMP,    at = (0.97 - LBM)/2 + 4.392 - 0.617;
+!   LNR.MCCAY.0460:   DHV,      at = (0.97 - LBM)/2 + 4.392 - 0.213 - 0.209/4;
+   LNR.MCCAY.0460:   DHV,      at = (0.97 - LBM)/2 + 2.25 + 1.92125;
+!   LNR.BPMEB.0457:   BPM,      at = (0.97 - LBM)/2  + 4.392 - 0.213;
+   LNR.BPMEB.0457:   BPM,      at = (0.97 - LBM)/2 + 2.25 + 1.92125;
+   LNR.MBHEK.0470a:  BMH1,     at = 4.5 - (LBM - 0.97) + LBM/2 - LBM/4;
+   LNR.MBHEK.0470:   MARKER,   at = 4.5 - (LBM - 0.97) + LBM/2;
+!   LNR.MBHEK.0470:  BMH,      at = 4.5 - (LBM - 0.97) + LBM/2;
+   LNR.MBHEK.0470b:  BMH2,     at = 4.5 - (LBM - 0.97) + LBM/2 + LBM/4;
+ENDSEQUENCE; 
+
+SECTION5: SEQUENCE, REFER=CENTRE, L=3.8964 - (LBM - 0.97) + LBM;
+   LNR.MXNAD.0505:   SF,       at = (0.97 - LBM)/2 + 0.200 + 0.150/2;
+/***  Trim quads for adjustment of beta functions around cooler, not implemented ***/
+!   Q1T,    at = (0.97 - LBM)/2 + 0.625 - 0.125/2;
+!   Q1T,    at = (0.97 - LBM)/2 + 0.625 + 0.125/2; 
+   LNR.MQLNG.0510:  Q1H,      at = (0.97 - LBM)/2 + 0.625 - 0.125/2;
+   LNR.MQLNG.0510m:   MARKER,   at = (0.97 - LBM)/2 + 0.625;
+   LNR.MQLNG.0511:  Q1H,      at = (0.97 - LBM)/2 + 0.625 + 0.125/2; 
+/***  Trim quads for adjustment of beta functions around cooler, not implemented ***/
+!   Q2T,    at = (0.97 - LBM)/2 + 1.0982 - 0.125/2; 
+!   Q2T,    at = (0.97 - LBM)/2 + 1.0982 + 0.125/2; 
+   LNR.MQNLG.0515:  Q2H,      at = (0.97 - LBM)/2 + 1.0982 - 0.125/2; 
+   LNR.MQNLG.0515m:   MARKER,   at = (0.97 - LBM)/2 + 1.0982; 
+   LNR.BPMEA.0520:   BPM,      at = (0.97 - LBM)/2 + 1.0982;
+   LNR.MQNLG.0516:  Q2H,      at = (0.97 - LBM)/2 + 1.0982 + 0.125/2; 
+   LNR.MXNAD.0525:   SD,       at = (0.97 - LBM)/2 + 1.4132 + 0.150/2;
+   LNR.ACWO2.0530:   RFC,      at = (0.97 - LBM)/2 + 1.7972; 
+!   VACP,  at = (0.97-LBM)/2 + 2.0449; 
+   LNR.MCCAY.0535:   DHV,      at = (0.97 - LBM)/2 + 2.2972; 
+   LNR.MQSAB.0540:   QSK1,     at = (0.97 - LBM)/2 + 2.5822; 
+!   SCRAP, at = (0.97-LBM)/2 + 2.9114;
+   LNR.BSSHV.0545:   SCRAP,    at = (0.97 - LBM)/2 + 2.98015;
+/***  Trim quads for adjustment of beta functions around cooler, not implemented ***/
+!  LNR.MQNLG.0550a:   Q3T,      at = (0.97 - LBM)/2 + 3.4714 - 0.125/2; 
+!  LNR.MQNLG.0550b:   Q3T,      at = (0.97 - LBM)/2 + 3.4714 + 0.125/2; 
+   LNR.MQNLG.0550:  Q3H,      at = (0.97 - LBM)/2 + 3.4714 - 0.125/2; 
+   LNR.MQNLG.0550m:   MARKER,   at = (0.97 - LBM)/2 + 3.4714; 
+   LNR.BPMEA.0555:   BPM,      at = (0.97 - LBM)/2 + 3.4714;
+   LNR.MQNLG.0551:  Q3H,      at = (0.97 - LBM)/2 + 3.4714 + 0.125/2; 
+   LNR.MBHEK.0560a:  BMH1,     at = 3.8964 - (LBM - 0.97) + LBM/2 - LBM/4;
+   LNR.MBHEK.0560:   MARKER,   at = 3.8964 - (LBM - 0.97) + LBM/2;
+!   LNR.MBHEK.0560:  BMH,       at = 3.8964 - (LBM - 0.97) + LBM/2;
+   LNR.MBHEK.0560b:  BMH2,     at = 3.8964 - (LBM - 0.97) + LBM/2 + LBM/4;
+ ENDSEQUENCE; 
+
+SECTION6: SEQUENCE, REFER=CENTRE, L=3.8964 - (LBM - 0.97) + LBM;
+   LNR.MQNLG.0605:  Q3H,      at = (0.97 - LBM)/2 + 0.425 - 0.125/2; 
+   LNR.MQNLG.0605m:   MARKER,   at = (0.97 - LBM)/2 + 0.425; 
+   LNR.MQNLG.0606:  Q3H,      at = (0.97 - LBM)/2 + 0.425 + 0.125/2; 
+   LNR.ZDFHL.0610:   DFH1,     at = (0.97 - LBM)/2 + 1.115;
+!   M20,  at = (0.97 - LBM)/2 + 1.115 + 0.45;
+   LNR.BQKMA.0612:   Qmeter,   at = (0.97 - LBM)/2 + 2.0086;
+   LNR.MCCAY.0615:   DHV,      at = (0.97 - LBM)/2 + 2.286 + 0.209/2;
+   LNR.MQLNG.0620:   Q2H,      at = (0.97 - LBM)/2 + 2.7982 - 0.125/2; 
+   LNR.BPMEA.0625:   BPM,      at = (0.97 - LBM)/2 + 2.7982; 
+   LNR.MQLNG.0626:   Q2H,      at = (0.97 - LBM)/2 + 2.7982 + 0.125/2; 
+   LNR.MQLNG.0630:   Q1H,      at = (0.97 - LBM)/2 + 3.2714 - 0.125/2; 
+   LNR.MQLNG.0631:   Q1H,      at = (0.97 - LBM)/2 + 3.2714 + 0.125/2; 
+   LNR.MQSAB.0635:   QSK2,     at = (0.97 - LBM)/2 + 3.591;
+   LNR.MBHEK.0640a:  BMH1,     at = 3.8964 - (LBM - 0.97) + LBM/2 - LBM/4;
+   LNR.MBHEK.0640:   MARKER,   at = 3.8964 - (LBM - 0.97) + LBM/2;
+!   LNR.MBHEK.0640:   BMH,      at = 3.8964 - (LBM - 0.97) + LBM/2;
+   LNR.MBHEK.0640b:  BMH2,     at = 3.8964 - (LBM - 0.97) + LBM/2 + LBM/4;
+ENDSEQUENCE; 
+
+! Davide - April 2019:
+!  added begin/end markers
+ELENA: SEQUENCE,REFER=ENTRY,L= 2*4.5 - 6*(LBM - 0.97) + 6*LBM + 4*3.8964;
+   LNR.BEGIN: MARKER, at = 0;
+   SECTION1,          at = 0;
+   SECTION2,          at =   4.5 -   (LBM - 0.97) +   LBM;
+   SECTION3,          at =   4.5 - 2*(LBM - 0.97) + 2*LBM + 3.8964;
+   SECTION4,          at =   4.5 - 3*(LBM - 0.97) + 3*LBM + 2*3.8964;
+   SECTION5,          at = 2*4.5 - 4*(LBM - 0.97) + 4*LBM + 2*3.8964;
+   SECTION6,          at = 2*4.5 - 5*(LBM - 0.97) + 5*LBM + 3*3.8964;
+   LNR.END:   MARKER, at = 2*4.5 - 6*(LBM - 0.97) + 6*LBM + 4*3.8964;
+ENDSEQUENCE;
+
+RETURN;
