@@ -1,0 +1,182 @@
+!
+! ELENA ring elements.
+!
+!
+! Changelog:
+! - 5/06/2018: started with Pavel''s optics.
+
+
+
+/******************************************************************************************************
+! Parameters used for building dipoles.
+! The bending radius of ELENA magnet is equal 0.927m, and its length is equal to rho*phi
+******************************************************************************************************/
+  LBM := 0.927*Pi/3;
+  BME := PI*16.45/180.;
+ 
+/****************************************************************************************************
+! The value of bending magnet edge angle has been modified after comparison of tracking particles 
+! through the manufactured magnet with OPERA program and tracking of particles through the designed 
+! bending magnet which is described with MADX. 
+! 
+! To compare these two magnets, many particles initially have been placed on ellipse well distanced 
+! from magnet to take into account extended fields. To fit ellipse inclination after tracking with MADX 
+! (Olav Berrig) to that after tracking with OPERA (Alexander Aloev,visitor from Moscow State University), 
+! edge angle has been varied, and then corrected from 17 degrees (which was design value) to 16.45 degrees.
+! 
+! In addition to that, tracking showed visible distortion of the ellipse shape, which was successfully 
+! corrected by introducing sextupolar component on both edge of magnet. It was resulted from the 
+! nonlinearities od edge field, which was derived analytically by Pavel Belochitskii) 
+******************************************************************************************************/
+  BMH: SBEND, L=LBM,   ANGLE=PI/3,E1=BME, E2=BME, FINT=0.424, HGAP=0.076/2,apertype=ellipse,aperture={0.03,0.03};
+
+/******************************************************************************************************
+! Sometimes one needs to cut magnet in 2 parts, for example for better plots of Twiss functiions, 
+! or for better calculations of lifetimes, or better knowledge of average values etc. 
+! In this case it worth to cut bending magnets in pieces
+******************************************************************************************************/
+  BMH1: SBEND, L=LBM/2,ANGLE=PI/6,E1=BME, E2=0  , FINT=0.424, HGAP=0.076/2, FINTX=0, apertype=ellipse,aperture={0.03,0.03};
+  BMH2: SBEND, L=LBM/2,ANGLE=PI/6,E1=0  , E2=BME, FINT=0,     HGAP=0.076/2, FINTX=0.424, apertype=ellipse,aperture={0.03,0.03}; 
+
+/******************************************************************************************************
+! thin quadrupole length can be installed on both sides of ELENA bending magnet to modify edge angle 
+******************************************************************************************************/
+  BME_edge_angle_error: MULTIPOLE, KNL={0,PI*16.45/180*0.001};
+  
+/******************************************************************************************************
+! A multipole definition of SBEND allowing to add multipole errors 
+******************************************************************************************************/
+
+!OPTION, THIN_FOC=true;
+
+  edgeBMH1: DIPEDGE,H=(PI/3)/(LBM), E1=BME  , FINT=0.424, HGAP=0.076/2;
+  MBMH1: multipole,LRAD=LBM/2, KNL={PI/6},apertype=ellipse,aperture={0.03,0.03};
+  MBMH2: multipole,LRAD=LBM/2, KNL={PI/6},apertype=ellipse,aperture={0.03,0.03};
+  edgeBMH2: DIPEDGE,H=(PI/3)/(LBM), E1=BME , FINT=0.424, HGAP=0.076/2;
+
+/******************************************************************************************************
+! quadrupoles are divided in two equal parts
+******************************************************************************************************/
+  Q1H:  QUADRUPOLE, L=0.125, K1:=KQ1,apertype=ellipse,aperture={0.03,0.03};
+  Q2H:  QUADRUPOLE, L=0.125, K1:=KQ2,apertype=ellipse,aperture={0.03,0.03};
+  Q3H:  QUADRUPOLE, L=0.125, K1:=KQ3,apertype=ellipse,aperture={0.03,0.03};
+
+/******************************************************************************************************
+! skew quadrupoles used for the residual coupling compensation
+******************************************************************************************************/
+  QSK1: QUADRUPOLE, L=0.15, K1S:=KSQ1,apertype=ellipse,aperture={0.03,0.03}; 
+  QSK2: QUADRUPOLE, L=0.15, K1S:=KSQ2,apertype=ellipse,aperture={0.03,0.03};
+
+/*****************************************************************************************************
+! These quadrupoles could be used like trims in case asymmetry in ELENA will be needed 
+! (for example, to put quadrupole trims in electron cooler section) 
+*****************************************************************************************************/
+!  Q1T: QUADRUPOLE, L=0.125, K1:=KQ1 + dKQ1;
+!  Q2T: QUADRUPOLE, L=0.125, K1:=KQ2 + dKQ2;
+!  Q3T: QUADRUPOLE, L=0.125, K1:=KQ3 + dKQ3;
+
+/***************************************************************************************************
+! These quadrupoles will be used to take into account tilt of normal quadrupoles
+****************************************************************************************************/
+!  TQ1: multipole, KNL:={0,K1TQ1};
+!  TQ2: multipole, KNL:={0,K1TQ2};
+!  TQ3: multipole, KNL:={0,K1TQ3};
+
+   
+/******************************************************************************************************
+!  Electron cooler solenoid is called MSOL,  two solenoids SCOMP used for coupling compensation. 
+!  Cooler solenoid may be divided in pieces to take into account effect 
+!  of space charge of antiproton beam (Laslett tune shift)
+******************************************************************************************************/
+  MSOL:  SOLENOID, L=0.650, KS:=KMSOL,apertype=ellipse,aperture={0.03,0.03};
+  !!Disable Ecool
+  MSOL1: SOLENOID, L=0.650-((0.763 + 0.1016)/2), KS:=KMSOL,apertype=ellipse,aperture={0.03,0.03};
+  !!MSOL1: drift, L=0.650-((0.763 + 0.1016)/2);
+  !!Disable Ecool
+  MSOL2: SOLENOID, L=(0.763 + 0.1016)/2 , KS:=KMSOL,apertype=ellipse,aperture={0.03,0.03};
+  !!MSOL2: drift, L=(0.763 + 0.1016)/2; 
+  SCOMP: SOLENOID, L=0.360, KS:=KSCOMP,apertype=ellipse,aperture={0.03,0.03};
+
+/******************************************************************************************************
+! kicks from toroid coils of electron cooler taken into account
+******************************************************************************************************/
+!!Disable Ecool
+
+TOR1:  KICKER, L=0., HKICK:= Tkick, VKICK:=0,apertype=ellipse,aperture={0.03,0.03};
+TOR2:  KICKER, L=0., HKICK:=-Tkick, VKICK:=0,apertype=ellipse,aperture={0.03,0.03};
+
+!!TOR1: drift, L=0.0;
+!!TOR2:  drift, L=0.0;
+
+
+/******************************************************************************************************
+! sextupoles used for chromaticity correction
+******************************************************************************************************/
+  SF: SEXTUPOLE, L=0.15, K2:=KSF,apertype=ellipse,aperture={0.03,0.03};
+  SD: SEXTUPOLE, L=0.15, K2:=KSD,apertype=ellipse,aperture={0.03,0.03};
+
+
+/******************************************************************************************************
+! dipoles for orbit correction
+******************************************************************************************************/
+  DHV: KICKER, L=0., HKICK:=0., VKICK:=0.,apertype=ellipse,aperture={0.03,0.03};
+
+/******************************************************************************************************
+! Kyoto-style correctors around electron cooler
+******************************************************************************************************/
+  DHVEC1: KICKER, L=0., HKICK:=0., VKICK:=0.,apertype=ellipse,aperture={0.03,0.03};
+  DHVEC2: KICKER, L=0., HKICK:=0., VKICK:=0.,apertype=ellipse,aperture={0.03,0.03};
+
+
+
+/******************************************************************************************************
+! injection kicker 
+******************************************************************************************************/
+  KFI: HKICKER, l=0.432, KICK:=0,apertype=ellipse,aperture={0.03,0.03};
+
+
+/******************************************************************************************************
+! extraction kickers
+! In fact, both are electrostatic elements, and for simulations have to be treated in a proper way 
+******************************************************************************************************/   
+  DFH1:  HKICKER,L=0.5, KICK:=0.,apertype=ellipse,aperture={0.03,0.03};
+! Increased kicker to LNE50 length from 0.5 to 0.6 as ABT transferline optics files
+! davide Sep 2018
+  DFH2:  HKICKER,L=0.6, KICK:=0.,apertype=ellipse,aperture={0.03,0.03};
+   
+/******************************************************************************************************
+! RF cavity 
+******************************************************************************************************/
+  RFC:   RFCAVITY, L=0.3, VOLT:=RFvoltage,apertype=ellipse,aperture={0.03,0.03};
+
+
+
+/***************************************************************************************************
+! Instrumentation  
+****************************************************************************************************/
+  BPM:    MONITOR,    L=0,apertype=ellipse,aperture={0.03,0.03};
+  USL:    INSTRUMENT, L=0.425,apertype=ellipse,aperture={0.03,0.03};
+  SCRAP:  INSTRUMENT, L=0.550,apertype=ellipse,aperture={0.03,0.03};
+  VACP:   INSTRUMENT, L=0.,apertype=ellipse,aperture={0.03,0.03};
+  !BTV:    INSTRUMENT, L=0.392/2,apertype=ellipse,aperture={0.03,0.03}; ! should probably be deleted - davide Jun2018
+  BTV:    INSTRUMENT, L=0.,apertype=ellipse,aperture={0.03,0.03};
+  Qmeter: INSTRUMENT, L=0.350,apertype=ellipse,aperture={0.03,0.03};
+ 
+ 
+/***************************************************************************************************
+! Markers 
+****************************************************************************************************/
+  MSS:      MARKER;
+  EBEAM:    MARKER;
+  MECOOL:   MARKER;
+  KFISTART: MARKER;
+  SMI:      MARKER;
+  SMIENDM:  MARKER;
+  SMIEND:   MARKER;
+  BTV_MID:  MARKER;
+  M10:      MARKER;
+  M20:      MARKER;
+  MAXBETX:  MARKER;
+
+
+RETURN;

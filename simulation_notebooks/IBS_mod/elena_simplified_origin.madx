@@ -1,0 +1,122 @@
+!/*****************************************************
+! *
+! * MADX file for ELENA low energy antiproton deaccelerator
+! * simplified version than elena.madx 
+! *
+! * July 2018 - davide.gamba@cern.ch
+! *****************************************************/
+
+set,  format="-20s";
+set,  format="8.5f";
+OPTION, ECHO, WARN=false, -INFO, VERBOSE=false;
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! /* Machine Elements definition */
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+call, file = "ELENA_elements.def";
+call, file = "ELENA_ring_mod.seq";
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! /* Quadrupole strengths */ 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+call, file = "Quadrupole_settings";
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! BEAM, USE
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! do computation assuming 100 MeV/c beam momentum (injection)
+!BEAM,PARTICLE=ANTIPROTON, PC=0.100; ! 100 MeV/c
+
+MREST0:=0.9383;
+MREST2:=MREST0*MREST0;
+
+Ek:=0.0001;
+E0:=MREST0+Ek;
+
+PC0:=0.0137; !13.7 MeV/c
+gamma:=E0/MREST0;  ! Lorentz factor
+bc0:=PC0/(MREST0*gamma); ! relativistic beta
+
+beam_def: Beam, Particle = antiproton, PC=PC0, Npart = 4500000
+, BUNCHED,EX= 0.5e-6, EY= 0.1e-6, SIGE= 2.1312e-08, SIGT= 0.3284;
+
+
+!USE, PERIOD=ELENA;
+
+seqedit, sequence=ELENA;
+flatten;
+endedit; 
+
+
+use, sequence=ELENA;
+
+!MATCH, SEQUENCE=ELENA;
+!GLOBAL, Q1=2.454;//H-tune
+!GLOBAL, Q2=1.416;//V-tune
+!!GLOBAL, DQ1=1.416;//V-tune
+!VARY, NAME= KQ1, STEP=0.000001;
+!VARY, NAME = KQ2, STEP=0.000001;
+!LMDIF, CALLS=100, TOLERANCE=1e-6;//method adopted
+!ENDMATCH;
+
+!/*******************************************************************************
+! *******************************************************************************
+! * ZERO CHROMATICITY. MATCHING SEXTUPOLES WITH PTC
+! *******************************************************************************
+! *******************************************************************************/
+! option, -info;
+! option, -echo;
+!
+
+
+! *******************************************************************************
+! * MAD-X macros
+! *******************************************************************************
+maketwissptc : macro={
+
+  SELECT,flag=ptc_twiss,clear;
+  ! TIME=FALSE gives correct chromaticity calculation by default, i.e. no need to multiply dispersion by relativistic beta
+  PTC_CREATE_UNIVERSE;
+  PTC_CREATE_LAYOUT, MODEL=2, METHOD=6, NST=5, TIME=false, EXACT;         ! TIME=FALSE gives correct chromaticity calculation
+  SELECT, flag=ptc_twiss,column=name,keyword,l,s,betx,alfx,mu1,disp1,disp2,bety,alfy,mu2,disp3,disp4;
+  PTC_TWISS, CLOSED_ORBIT, TABLE=PTC_TWISS, ICASE=5, NO=3, SUMMARY_TABLE; !, SUMMARY_FILE="summary", FILE="ptc_twiss.out" ;
+  PTC_END;
+}
+maketwiss : macro={
+
+  ! note that chromatic quantities (e.g. Dispersion) need to be multiplied by relativistic beta to obtain actual values.
+  dxst :=table(twiss,dx)*bc0; ! standard dispersion calculated from the MADX dispersion for low energies
+  dyst :=table(twiss,dy)*bc0; 
+  dpyst :=table(twiss,dpy)*bc0; 
+  dpxst :=table(twiss,dpx)*bc0; 
+  sigma_x :=sqrt(table(twiss,betx)*1E-6)*1000; !mm
+  sigma_y :=sqrt(table(twiss,bety)*75E-8)*1000; !mm
+   select, flag=twiss, clear;
+   !select, flag=twiss,column=name,keyword,s,betx,alfx,mux,dxst,dpxst,bety,alfy,muy,dyst,dpyst,sigma_x,sigma_y,k1l,k3l;
+   select, flag=twiss,column=name,keyword,s,betx,alfx,mux,dxst,dpxst,bety,alfy,muy,dyst,dpyst;
+  twiss;
+}
+
+
+! *******************************************************************************
+! * do something 
+! *******************************************************************************
+exec, maketwissptc;
+plot, noversion=true, table=ptc_twiss, ptc=true, haxis=s, vaxis1=betx,bety, vaxis2=disp1, interpolate,
+     hmin=0, hmax=30.4,title="PTC Twiss", colour=100, file=simpleTest;
+write, table=ptc_twiss, file=NoEcoolTwissPTC.tfs;
+
+
+exec, maketwiss;
+write, table=twiss, file=NoEcoolTestTwiss.tfs;
+
+plot, noversion=true, table=twiss, haxis=s, vaxis1=betx,bety, vaxis2=dx, interpolate,
+     hmin=0, hmax=30.4,title="Normal Twiss", colour=100, file=simpleTest;
+plot, noversion=true, table=twiss, haxis=s, vaxis1=sigma_x,sigma_y, vaxis2=dx, interpolate,
+     hmin=0, hmax=30.4,title="Normal Twiss", colour=100, file=simpleTest;     
+
+IBS, FILE=ibs_elena_madx;
