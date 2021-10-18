@@ -153,13 +153,12 @@ def run(intensity, chroma=0, i_oct=0):
     bunchmonitor = BunchMonitor(
         outputpath+'/bunchmonitor_{:04d}_chroma={:g}'.format(it, chroma),
         n_turns, simulation_parameters_dict,
-        write_buffer_to_file_every=512,
-        buffer_size=4096)
+        write_buffer_every=100)
     slicemonitor = SliceMonitor(
         outputpath+'/slicemonitor_{:04d}_chroma={:g}'.format(it, chroma),
         n_turns_slicemon,
         slicer_for_slicemonitor, simulation_parameters_dict,
-        write_buffer_to_file_every=1, buffer_size=n_turns_slicemon)
+        write_buffer_every=1, buffer_size=n_turns_slicemon)
 
 
     # TRACKING LOOP
