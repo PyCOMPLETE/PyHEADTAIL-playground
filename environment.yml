@@ -1,0 +1,13 @@
+name: pyheadtail
+channels:
+  - conda-forge
+dependencies:
+  - python
+  - numpy
+  - scipy
+  - Cython
+  - pip
+  - pip:
+    - matplotlib
+    - seaborn
+    - PyHEADTAIL ==1.16.0
