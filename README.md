@@ -1,9 +1,16 @@
 # PyHEADTAIL-playground
-A collection of jupyter notebooks and scripts for [PyHEADTAIL](https://github.com/PyCOMPLETE/PyHEADTAIL).
+A collection of jupyter notebooks and scripts for the [PyHEADTAIL](https://github.com/PyCOMPLETE/PyHEADTAIL) collective beam dynamics simulation code.
 
-<a href="https://cern.ch/swanserver/cgi-bin/go?projurl=https://github.com/PyCOMPLETE/PyHEADTAIL-playground.git" target="_blank"><img src="http://swanserver.web.cern.ch/swanserver/images/badge_swan_white_150.png"/></a>
+Give it a try and play with `PyHEADTAIL`, get started by launching a binder instance with a jupyter notebook server in your browser with a simple click:
+
+<a href="https://mybinder.org/v2/gh/PyCOMPLETE/PyHEADTAIL-playground/HEAD" target="_blank"><img src="https://mybinder.org/badge_logo.svg" height=27 /></a>
+
+If you have a CERN account, you can also launch this repository in an interactive SWAN environment. This offers a jupyter notebook server and saves all your files to your EOS space, which is convenient for re-use:
+
+<a href="https://cern.ch/swanserver/cgi-bin/go?projurl=https://github.com/PyCOMPLETE/PyHEADTAIL-playground.git" target="_blank"><img src="http://swanserver.web.cern.ch/swanserver/images/badge_swan_white_150.png" /></a>
 
 A quick start tutorial explaining the basics of `PyHEADTAIL` can be found on the top level of this repository:
+
 [Quick Start Tutorial for PyHEADTAIL](https://nbviewer.jupyter.org/github/PyCOMPLETE/PyHEADTAIL-playground/blob/master/Tutorial.ipynb)
 
 ## Full Simulation Examples
