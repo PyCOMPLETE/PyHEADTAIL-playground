@@ -6,7 +6,6 @@ for a single bunch
 # using Python 2.7:
 from __future__ import division, print_function
 range_ = range
-range = xrange
 
 import sys
 # PyHEADTAIL location if it's not already in the PYTHONPATH environment variable
@@ -176,7 +175,7 @@ def run(intensity, chroma=0, i_oct=0):
     # GO!!!
     for i in range(n_turns):
 
-        t0 = time.clock()
+        t0 = time.process_time()
 
         # track the beam around the machine for one turn:
         machine.track(bunch)
@@ -205,7 +204,7 @@ def run(intensity, chroma=0, i_oct=0):
 
         # print status all 1000 turns:
         if i % 1000 == 0:
-            t1 = time.clock()
+            t1 = time.process_time()
             print ('Emittances: ({:.3g}, {:.3g}, {:.3g}) '
                    '& Centroids: ({:.3g}, {:.3g}, {:.3g})'
                    '@ turn {:d}, {:g} ms, {:s}'.format(
