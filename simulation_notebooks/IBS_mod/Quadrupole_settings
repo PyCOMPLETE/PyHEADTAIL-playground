@@ -1,0 +1,373 @@
+!!! Three quadrupole families used in ELENA, each includes 4 equal members
+!!! To complete optics definition, one more parameter has to be defined, it is edge angle of bending magnet
+
+!!! Quad setting for Qx=2.3,Qy=1.3, gap=90mm in BMs, E1=E2=Pi/10, FINT=0.5
+!KQ1:= 2.689573E+00;
+!KQ2:=-1.658787E+00;
+!KQ3:= 8.332620E-01;
+!KSF=  22.19;
+!KSD= -42.095;
+
+!!! Quad setting for Qx=2.3,Qy=1.3, gap=98mm in BMs, E1=E2=Pi/10, FINT=0.5
+!KQ1:= 2.70436E+00;
+!KQ2:=-1.76217E+00;
+!KQ3:= 8.43552E-01;
+
+!KSF= 20.9281;
+!KSD=-39.9785*0;
+
+!!! Qx=2.3,Qy=1.3, gap=76mm, E1=E2=Pi*17/180, FINT=0.5
+!KQ1:= 2.35479E+00;
+!KQ2:=-1.38968E+00;
+!KQ3:= 7.14651E-01;
+
+!!! Qx=2.3,Qy=1.3, gap=76mm, E1=E2=Pi*17/180, FINT=0.424
+!KQ1:= 2.26868e+00;
+!KQ2:=-1.19607e+00;
+!KQ3:= 7.18355e-01;
+
+!!! For E1=E2=15 degrees
+!KQ1:= 2.10E+00;
+!KQ2:=-1.38E+00;
+!KQ3:= 3.88E-01;
+
+!!! For E1=E2=19 degrees
+!KQ1:= 2.60E+00;
+!KQ2:=-1.44E+00;
+!KQ3:= 8.37E-01;
+
+!!! For Qx=1.3,Qy=2.3, E1=E2=29 degrees
+!KQ1:= 2.96953;
+!KQ2:=-2.55010;
+!KQ3:= 1.22255;
+!KSF= 3.70028;
+!KSD=-7.09711;
+
+!!! Qx=1.8,Qy=1.8, gap=76mm, E1=E2=17 degrees, FINT=0.5
+!KQ1:= 0.98 !2.23;
+!KQ2:=-1.24;
+!KQ3:= 0.35;
+
+/***********************************************************************************************
+ ----------------------  Optics settings choice during design studies  -------------------------
+***********************************************************************************************/
+! Qx=2.3,Qy=1.3, BM gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=Pi/3*0.927m ! Initial basic choice
+!KQ1:= 2.27646e+00;
+!KQ2:=-1.20793e+00;
+!KQ3:= 7.19841e-01;
+!KSF:=23.7315;
+!KSD:=-45.4831;
+!!!  cooler: betx=2.32m, bety=2.39m, Dx=1.50m, betx(max)=11.8m, bety(max)=6.6m
+
+! Qx=2.309,Qy=1.309, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=Pi/3*0.927m
+!KQ1:= 2.35527e+00;
+!KQ2:=-1.30180e+00;
+!KQ3:= 7.19724e-01;
+!KSF:=23.7315;
+!KSD:=-45.4831;
+!!!  cooler: betx=2.08m, bety=2.96m, Dx=1.43m, betx(max)=12.0m, bety(max)=6.4m
+
+! Qx=2.28,Qy=1.30, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  cooler: betx=2.47m, bety=2.48m, Dx=1.17m, betx(max)=14.1m, bety(max)=6.6m
+!KQ1:=2.37320e+00;
+!KQ2:=-1.18231e+00;
+!KQ3:=6.48274e-01;
+
+! Qx=2.28,Qy=1.28, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  cooler: betx=2.36m, bety=2.21m, Dx=1.48m, betx(max)=12.5m, bety(max)=7.3m
+!KQ1:=2.19284e+00;
+!KQ2:=-1.02431e+00;
+!KQ3:=6.87485e-01;
+!KSF:=25.8331; 
+!KSD:=-49.6903;
+
+! Qx=2.27,Qy=1.27, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  cooler: betx=2.48m, bety=2.20m, Dx=1.49m, betx(max)=12.9m, bety(max)=7.6m
+!KQ1:=2.13978e+00;
+!KQ2:=-9.26563e-01;
+!KQ3:=6.75039e-01;
+!KSF:=26.5249; 
+!KSD:=-50.9945;
+
+! Qx=2.27,Qy=1.30, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  cooler: betx=2.67m, bety=2.64m, Dx=0.96m, betx(max)=15.5m, bety(max)=6.6m
+!KQ1:=2.43083e+00;
+!KQ2:=-1.18109e+00;
+!KQ3:=6.16973e-01;
+!!!  Sol on, 100G, e-beam on: Qx=2.266, Qy=1.296 (dp=0), 
+!!!                           Qx=2.241, Qy=1.294 (dp=0.5%)
+!!!                           Qx=2.292, Qy=1.299 (dp=-0.5%)
+!!!                           Betx(max)=16.0m, Bety(max)=6.4m (dp=0)
+!!!                           Betx,y(EC) = 2.60/2.55, Dx(EC) = 0.97
+
+! Qx=2.26,Qy=1.29, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  cooler: betx=2.65m, bety=2.50m, Dx=1.05m, betx(max)=15.8m, bety(max)=6.6m
+!KQ1:=2.36677e+00;
+!KQ2:=-1.10585e+00;
+!KQ3:=6.49360ee-01;
+
+! Qx=2.26,Qy=1.27, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  cooler: betx=2.65m, bety=2.29m, Dx=1.38m, betx(max)=13.8m, bety(max)=7.6m
+!KQ1:=2.15794e+00;
+!KQ2:=-8.99080e-01;
+!KQ3:=6.49360e-01;
+!KSF:=2.87864e+01;
+!KSD:=-5.23605e+01;
+
+!!! Qx=2.46,Qy=1.46, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!! cooler: betx=1.20 m, bety=2.16m
+!KQ1:= 2.90619e+00;
+!KQ2:= -2.43108e+00;
+!KQ3:=  8.17551e-01;
+ 
+!!! Qx=2.46,Qy=1.46, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!! cooler: betx=1.30 m, bety=2.39m, Dx=1.08m, Betmax=13.4/4.5, Dxmax=1.5m
+!KQ1:= 3.06772e+00;
+!KQ2:= -2.49675e+00;
+!KQ3:=  7.39252e-01;
+
+!!! Qx=2.46,Qy=1.46, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!! slighly bigger betx=1.4m, bety=2.4m needs bigger acceptances
+!KQ1:= 3.27791e+00;
+!KQ2:= -2.54332e+00;
+!KQ3:=  7.67173e-01;
+
+!!! Qx=2.44,Qy=1.46, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!! cooler: betx=1.45 m, bety=2.39  Dxm=1.38 m 
+!KQ1:= 3.19236e+00;
+!KQ2:= -2.48155e+00;
+!KQ3:=  7.65935e-01;
+
+!!! Qx=2.44,Qy=1.46, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!! cooler: betx=1.45 m, bety=2.39  Dxm=1.38 m 
+!!!KQ1:= 3.844e+00;
+!!!KQ2:= -2.355e+00;
+!!!KQ3:=  1.275e+00;
+
+!!! Qx=2.44,Qy=1.46, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!! cooler on: betx=1.36 m, bety=2.74 m, Dxm=1.03 m 
+!!! betx(max)/bety(max)/Dx(max)
+
+! MSOL and SCOMP on
+!KQ1:= 2.98992e+00;
+!KQ2:= -2.38468e+00;
+!KQ3:= 7.10937e-01;
+
+/***********************************************************************************************
+ ----------------------  Optics settings choice for commissioning  -------------------------
+***********************************************************************************************/
+!!! Qx=2.44,Qy=1.46, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!! cooler on: betx=1.38 m, bety=2.43 m, Dxm=1.05 m 
+!!! betx(max)/bety(max)/Dx(max) 10.1/4.51/1.50
+
+! MSOL and SCOMP off
+!!! cooler on: betx=1.38 m, bety=2.43 m, Dxm=1.05 m 
+!!! betx(max)/bety(max)/Dx(max) 10.1/4.51/1.50
+KQ1:= 3.040329655e+00;
+KQ2:= -2.459580048e+00;
+KQ3:= 0.7135949997e+00;
+KSF:=0.; ! 23.9669;
+KSD:=0.; !-37.7605;
+
+!!! for E1=E2=16.45 degrees, Qx=2.34, Qy=1.36
+!KQ1:= 2.601e+00;
+!KQ2:= -1.725e+00;
+!KQ3:= 6.252e-01;
+
+!!! Qx=2.43,Qy=1.41, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  cooler: betx=1.60m, bety=2.66m, Dx=0.79m, betx(max)=15.6m, bety(max)=4.6m
+!KQ1:= 3.21723e+00;
+!KQ2:= -2.30158e+00;
+!KQ3:=  7.17592e-01;
+
+!!! Qx=2.41,Qy=1.43, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  cooler: betx=1.70m, bety=2.69m, Dx=0.71m, betx(max)=16.1m, bety(max)=4.6m
+!KQ1:= 3.23872e+00;
+!KQ2:= -2.35774e+00;
+!KQ3:=  6.88295e-01;
+!KSF= 31.6108;
+!KSD=-41.640;
+!!!  Sol on, 100G, e-beam on: Qx=2.409, Qy=1.426 (dp=0), 
+!!!                           Qx=2.242, Qy=1.382 (dp=0.5%)
+!!!                           Qx=2.185, Qy=1.185 (dp=-0.5%)
+!!!                           Betx(max)=16.4m, Bety(max)=4.7m (dp=0)
+!!!                           Betx,y(EC) = 1.58/2.43, Dx(EC) = 0.71
+
+!!! Qx=2.40,Qy=1.42, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  cooler: betx=1.74m, bety=2.69m, Dx=0.75m, betx(max)=15.7m, bety(max)=4.7m
+!KQ1:= 3.17017e+00;
+!KQ2:= -2.27526e+00;
+!KQ3:=  6.89292e-01;
+!KSF= ;
+!KSD=;
+!!!  Sol on, 100G, e-beam on: Qx=2.40, Qy=1 42(dp=0), 
+!!!                           Qx=2.242, Qy=1.382 (dp=0.5%)
+!!!                           Qx=2.185, Qy=1.185 (dp=-0.5%)
+!!!                           Betx(max)=m, Bety(max)=m (dp=0)
+!!!                           Betx,y(EC) = /, Dx(EC) = 
+
+!!! Qx=2.38,Qy=1.36, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  cooler: betx=1.70 m, bety=2.66 m, Dx=1.04 m, betx(max)=13.3 m, bety(max)=4.73 m
+!KQ1:= 2.722872201e+00;
+!KQ2:= -1.860329745e+00;
+!KQ3:=  0.6634130943e+00;
+!KSF=2.82361e+01 ;
+!KSD=-4.30313e+01 ;
+
+!!! Qx=2.38,Qy=1.35, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  cooler: betx=1.81 m, bety=2.58 m, Dx=0.98 m, betx(max)=14.1 m, bety(max)=5.2 m
+!KQ1:= 2.87132e+00;
+!KQ2:= -1.84121e+00;
+!KQ3:=  7.16335e-01;
+!KSF=2.82361e+01 ;
+!KSD=-4.30313e+01 ;
+
+!!! Qx=2.37,Qy=1.34, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  cooler: betx=1.84 m, bety=2.53 m, Dx=1.04 m, betx(max)=13.7 m, bety(max)=5.4 m
+!KQ1:= 2.79186e+00;
+!KQ2:= -1.748911e+00;
+!KQ3:=  7.18483e-01;
+!KSF=2.76013e+01 ;
+!KSD=-4.32724e+01 ;
+
+!!! Qx=2.36,Qy=1.33, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  cooler: betx=1.84 m, bety=2.53 m, Dx=1.04 m, betx(max)=13.7 m, bety(max)=5.4 m
+!KQ1:= 2.84381e+00;
+!KQ2:= -1.70628e+00;
+!KQ3:=  6.79473e-01;
+!KSF=3.16846e+01 ;
+!KSD=-4.42928e+01 ;
+
+!!! Qx=2.355,Qy=1.32, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  cooler: betx=2.02 m, bety=2.66 m, Dx=-.88 m, betx(max)=14.8 m, bety(max)=5.8 m
+!KQ1:= 2.79400e+00;
+!KQ2:=-1.63347e+00;
+!KQ3:= 6.80319e-01;
+!KSF=  3.14335e+01 ;
+!KSD= -4.45486e+01 ;
+
+!!! Qx=2.345,Qy=1.31, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  cooler: betx=2.10 m, bety=2.66 m, Dx=0.87 m, betx(max)=15.0 m, bety(max)=6.0 m
+!KQ1:= 2.74028e+00;
+!KQ2:=-1.54680e+00;
+!KQ3:= 6.73258e-01;
+!KSF=  3.18740e+01 ;
+!KSD= -4.50223e+01 ;
+
+!!! Qx=2.37,Qy=1.39, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  betx=1.80m, bety=2.55m, Dx=1.0m, betx(max)=13.8m, bety(max)=4.6m
+!KQ1:= 2.89408e+00;
+!KQ2:= -1.98930e+00;
+!KQ3:=  7.11227e-01;
+
+!!! Qx=2.23,Qy=1.23, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  cooler: Betx(EC)=3.1/ 2.1, BETmax = 15.0 / 9.3 
+!KQ1:=  1.94847e+00;
+!KQ2:= -5.34602e-01;
+!KQ3:=  6.22351e-01;
+
+!!! Qx=2.225,Qy=1.205, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  Betx(EC)=3.3/ 2.0, BETmax = 16.0 / 10.4, Dx (EC) = 1.4m
+!KQ1:=  1.92190;
+!KQ2:= -4.02044e-01;
+!KQ3:=  6.09452e-01;
+!! Solenoid off, e-beam off
+!KSF= 32.3304;
+!KSD=-56.241;
+
+!!! Qx=2.220,Qy=1.205, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  Betx(EC) = 3.4/2.0, BetMax = 16.1/10.5, Dx(EC) = 1.5, DQ1=-3.0,DQ2=-3.1
+!KQ1:=  1.89021;
+!KQ2:= -3.70147e-01;
+!KQ3:=  6.07140e-01;
+!! Solenoid off, e-beam off
+!KSF= 32.3304;
+!KSD=-56.241;
+!!!  Sol on, 100G,          : Qx=2.232, Qy=1.214 (dp=0),
+!!!  Sol on, 100G, e-beam on: Qx=2.215, Qy=1.203 (dp=0), 
+!!!                           Qx=2.241, Qy=1.209 (dp=-0.5%)
+!!!                           Qx=2.186, Qy=1.195 (dp=0.5%)
+!!!                           Betx(max)=16.7m, Bety(max)=10.2m (dp=0)
+!!!                           Betx,y(EC) = 3.4/2.0, Dx(EC) = 1.5
+
+!!! Qx=2.220,Qy=1.195 (bare), gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  Betx(EC) = 3.5/2.0, BetMax = 16.8/11.0, Dx(EC) = 1.3, DQ1=-3.1,DQ2=-3.1
+!KQ1:=  1.92299;
+!KQ2:= -3.44745e-01;
+!KQ3:=  5.97745e-01;
+!! Solenoid off, e-beam off
+!KSF= 32.3304;
+!KSD=-56.241;
+!!!  Sol on, 100G,          : Qx=2.232, Qy=1.204 (dp=0),
+!!!  Sol on, 100G, e-beam on: Qx=2.214, Qy=1.193 (dp=0), 
+!!!                           Qx=2.242, Qy=1.199 (dp=-0.5%)
+!!!                           Qx=2.185, Qy=1.185 (dp=0.5%)
+!!!                           Betx(max)=17.5m, Bety(max)=11.6m (dp=0)
+!!!                           Betx,y(EC) = 3.5/2.0, Dx(EC) = 1.4
+
+!!! Qx=2.205,Qy=1.225, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  Betx(EC)=3.5/ 2.0, BETmax = 15.8 / 9.7 , Dx (EC) = 1.7m
+!KQ1:=  1.80789;
+!KQ2:= -3.60641e-01;
+!KQ3:=  6.04559e-01;
+
+!KSF= 23.1960;
+!KSD=-42.7944;
+
+!!! Qx=2.21,Qy=1.23, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  Betx(EC)=3.5/ 2.2, BETmax = 16.6 / 9.3 , Dx (EC) = 1.4m
+!KQ1:= 1.91979e+00;
+!KQ2:= -4.52440e-01;
+!KQ3:= 5.93859e-01;
+
+!KSF= 32.9738;
+!KSD=--59.9510;
+
+!!! Qx=2.205,Qy=1.220, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  Betx(EC)=3.6 / 2.1, Dx (EC) = 1.6m, BETmax = 16.4 / 9.9 
+!KQ1:=  1.83666;
+!KQ2:= -3.53644e-01;
+!KQ3:=  5.97472e-01;
+!!!  Sol on, 100G,          : Qx=2.218, Qy=1.229 (dp=0),
+!!!  Sol on, 100G, e-beam on: Qx=2.199, Qy=1.218 (dp=0), 
+!!!                           Qx=2.226, Qy=1.224 (dp=-0.5%)
+!!!                           Qx=2.170, Qy=1.209 (dp=0.5%)
+!!!                           Betx(max)=17.1m, Bety(max)=9.7m (dp=0)
+!!!                           Betx,y(EC) = 3.6/2.0, Dx(EC) = 1.7
+
+!KSF= 31.4018;
+!KSD=-60.4056;
+
+!!! Qx=2.20,Qy=1.22, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  Betx(EC)=3.7/ 2.1, BETmax = 16.9 / 9.9 , Dx (EC) = 1.57m
+!KQ1:= 1.83215e+00;
+!KQ2:= -3.34424e-01;
+!KQ3:= 5.90297e-01;
+
+!KSF= 32.9738;
+!KSD=--59.9510;
+
+!! Qx=2.20,Qy=1.20, gap=76mm, E1=E2=Pi*17/180, FINT=0.424, Lbm=0.927m
+!!!  Betx(EC)=3.7/ 2.1, BETmax = 16.9 / 9.9 , Dx (EC) = 1.57m
+!KQ1:= 1.80039e+00;
+!KQ2:= -2.38011e-01;
+!KQ3:= 5.89587e-01;
+
+!KSF= 32.9738;
+!KSD=--59.9510;
+
+
+RETURN;
+
+KQ1:= 3.04032e+00;   !
+KQ2:= -2.45958e+00;  !
+KQ3:= 7.13597e-01;
+
+!KQ1:= 3.04032e+00;
+!KQ2:= -KQ1*0.74;
+!KQ3:= KQ1*0.25;
+
+
+
+RETURN;
+
